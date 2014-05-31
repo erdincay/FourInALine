@@ -22,6 +22,21 @@
     <Filter Include="Source Files\solution">
       <UniqueIdentifier>{a2aba747-c5f5-40b4-88db-bb21ff4a74a3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\solution">
+      <UniqueIdentifier>{a6403ba4-3cc5-4657-96a4-a6d4e7567d21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\action">
+      <UniqueIdentifier>{1a46b954-d876-4180-a1b2-7c18523bc16f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\action">
+      <UniqueIdentifier>{e79843c8-f330-44a7-afde-a8378dbf11ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\heuristic">
+      <UniqueIdentifier>{41edeb81-8275-47a2-9f85-f3144b758998}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\heuristic">
+      <UniqueIdentifier>{d3d0a622-f72a-40f9-bb4b-b2f33745611c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="model\ChessMan.h">
@@ -32,6 +47,21 @@
     </ClInclude>
     <ClInclude Include="model\Coordinater.h">
       <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="model\ChessBoard.h">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="solution\Minimax.h">
+      <Filter>Header Files\solution</Filter>
+    </ClInclude>
+    <ClInclude Include="model\State.h">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="action\Action.h">
+      <Filter>Header Files\action</Filter>
+    </ClInclude>
+    <ClInclude Include="heuristic\Heuristic.h">
+      <Filter>Header Files\heuristic</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -44,8 +74,23 @@
     <ClCompile Include="model\Coordinater.cpp">
       <Filter>Source Files\model</Filter>
     </ClCompile>
-    <ClCompile Include="4InLine.cpp">
+    <ClCompile Include="solution\4InLine.cpp">
       <Filter>Source Files\solution</Filter>
+    </ClCompile>
+    <ClCompile Include="model\ChessBoard.cpp">
+      <Filter>Source Files\model</Filter>
+    </ClCompile>
+    <ClCompile Include="solution\Minimax.cpp">
+      <Filter>Source Files\solution</Filter>
+    </ClCompile>
+    <ClCompile Include="model\State.cpp">
+      <Filter>Source Files\model</Filter>
+    </ClCompile>
+    <ClCompile Include="action\Action.cpp">
+      <Filter>Source Files\action</Filter>
+    </ClCompile>
+    <ClCompile Include="heuristic\Heuristic.cpp">
+      <Filter>Source Files\heuristic</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
