@@ -10,7 +10,7 @@ namespace solution
 
 	Minimax::Minimax(int size, shared_ptr<Heuristic> h)
 		:heuristic_(h),
-		borad_(shared_ptr<ChessBoard>(new ChessBoard(size)))
+		borad_(shared_ptr<State>(new ChessBoard(size)))
 	{
 
 	}
@@ -31,9 +31,10 @@ namespace solution
 
 		for (auto action : heuristic_->generateActions(s))
 		{
+			v.second = action;
 			shared_ptr<State> newState = action->act(s);
 			auto newV = Min_Value(newState, alpha, beta);
-			v = v.first > newV.first ? v : newV;
+			v.first = v.first > newV.first ? v.first : newV.first;
 
 			if (v.first >= beta)
 			{
@@ -57,9 +58,10 @@ namespace solution
 
 		for (auto action : heuristic_->generateActions(s))
 		{
+			v.second = action;
 			shared_ptr<State> newState = action->act(s);
 			auto newV = Max_Value(newState, alpha, beta);
-			v = v.first < newV.first ? v : newV;
+			v.first = v.first < newV.first ? v.first : newV.first;
 
 			if (v.first <= alpha)
 			{
@@ -75,5 +77,11 @@ namespace solution
 	shared_ptr<Action> Minimax::Alpha_Beta_Search(shared_ptr<model::State> s)
 	{
 		return Max_Value(s, numeric_limits<typeEval>::min(), numeric_limits<typeEval>::max()).second;
+	}
+
+	void Minimax::Run() 
+	{
+		auto bestAction = Alpha_Beta_Search(borad_);
+		borad_ = bestAction->act(borad_);
 	}
 }

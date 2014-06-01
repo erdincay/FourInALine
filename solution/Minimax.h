@@ -23,13 +23,14 @@ namespace solution
 		~Minimax();
 
 		std::shared_ptr<action::Action> Alpha_Beta_Search(std::shared_ptr<model::State> s);
+		void Run();
 
 	protected:
 		std::pair<typeEval, std::shared_ptr<action::Action>> Max_Value(std::shared_ptr<model::State> s, typeEval alpha, typeEval beta);
 		std::pair<typeEval, std::shared_ptr<action::Action>> Min_Value(std::shared_ptr<model::State> s, typeEval alpha, typeEval beta);
 
 	private:
-		std::shared_ptr<model::ChessBoard> borad_;
+		std::shared_ptr<model::State> borad_;
 		std::shared_ptr<heuristic::Heuristic> heuristic_;
 	};
 }
