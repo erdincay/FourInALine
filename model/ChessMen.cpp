@@ -16,11 +16,26 @@ namespace model
 	}
 
 	ChessMen::ChessMen(const ChessMen & oth) 
-		:statistics_(oth.statistics_)
 	{
 		for (const auto & elem : oth)
 		{
 			this->at(elem.first) = shared_ptr<ChessMan>(new ChessMan(*elem.second));
+		}
+
+		for (auto statistic : *(oth.statistics_))
+		{
+			auto newStatistic = shared_ptr<typeStatistic>(new typeStatistic);
+			for (auto linears : *(statistic.second))
+			{
+				auto newLinears = shared_ptr<typeChessLinears>(new typeChessLinears());
+				for (auto linear : *(linears.second))
+				{
+					auto newLinear = shared_ptr<ChessLinear>(new ChessLinear(*linear));
+					newLinears->push_back(newLinear);
+				}
+				newStatistic->at(linears.first) = newLinears;
+			}
+			statistics_->at(statistic.first) = newStatistic;
 		}
 	}
 

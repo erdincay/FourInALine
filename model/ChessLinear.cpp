@@ -10,7 +10,7 @@ namespace model
 	{
 	}
 
-	ChessLinear::ChessLinear(std::shared_ptr<ChessMan> start, std::shared_ptr<ChessMan> end)
+	ChessLinear::ChessLinear(shared_ptr<ChessMan> start, shared_ptr<ChessMan> end)
 		:start_(start),
 		end_(end)
 	{
@@ -18,8 +18,8 @@ namespace model
 	}
 
 	ChessLinear::ChessLinear(const ChessLinear & oth)
-		:start_(oth.start_),
-		end_(oth.end_)
+		:start_(shared_ptr<ChessMan>(new ChessMan(*oth.start_))),
+		end_(shared_ptr<ChessMan>(new ChessMan(*oth.end_)))
 	{
 
 	}

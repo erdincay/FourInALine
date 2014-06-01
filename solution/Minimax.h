@@ -2,6 +2,7 @@
 
 #include "../heuristic/Heuristic.h"
 #include <memory>
+#include <boost/asio/deadline_timer.hpp>
 
 namespace model
 {
@@ -32,6 +33,7 @@ namespace solution
 	private:
 		std::shared_ptr<model::State> borad_;
 		std::shared_ptr<heuristic::Heuristic> heuristic_;
+		std::shared_ptr<boost::asio::deadline_timer> timer_;
 	};
 }
 
