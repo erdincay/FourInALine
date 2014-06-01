@@ -11,6 +11,8 @@ namespace model
 		ChessBoard(int size);
 		virtual ~ChessBoard();
 
+		bool IsTerminal();
+
 	private:
 		int size_;
 		ChessMen pieces_;

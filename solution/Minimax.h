@@ -1,17 +1,36 @@
 #pragma once
 
-#include "../model/ChessBoard.h"
+#include "../heuristic/Heuristic.h"
+#include <memory>
+
+namespace model
+{
+	class State;
+	class ChessBoard;
+}
+
+namespace action
+{
+	class Action;
+}
 
 namespace solution
 {
 	class Minimax
 	{
 	public:
-		Minimax(int size);
+		Minimax(int size, std::shared_ptr<heuristic::Heuristic> h);
 		~Minimax();
 
+		std::shared_ptr<action::Action> Alpha_Beta_Search(std::shared_ptr<model::State> s);
+
+	protected:
+		std::pair<typeEval, std::shared_ptr<action::Action>> Max_Value(std::shared_ptr<model::State> s, typeEval alpha, typeEval beta);
+		std::pair<typeEval, std::shared_ptr<action::Action>> Min_Value(std::shared_ptr<model::State> s, typeEval alpha, typeEval beta);
+
 	private:
-		model::ChessBoard borad_;
+		std::shared_ptr<model::ChessBoard> borad_;
+		std::shared_ptr<heuristic::Heuristic> heuristic_;
 	};
 }
 

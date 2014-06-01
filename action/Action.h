@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../model/State.h"
+#include <memory>
 
 namespace action
 {
@@ -10,7 +11,7 @@ namespace action
 		Action();
 		virtual ~Action();
 
-		virtual model::State act(model::State s) = 0;
+		virtual std::shared_ptr<model::State> act(std::shared_ptr<model::State> s) = 0;
 	};
 
 }

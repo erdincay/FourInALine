@@ -11,4 +11,9 @@ namespace model
 	ChessBoard::~ChessBoard()
 	{
 	}
+
+	bool ChessBoard::IsTerminal()
+	{
+		return false;
+	}
 }

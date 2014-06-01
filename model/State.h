@@ -7,6 +7,8 @@ namespace model
 	public:
 		State();
 		virtual ~State();
+
+		virtual bool IsTerminal() = 0;
 	};
 
 }
