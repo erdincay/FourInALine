@@ -1,7 +1,11 @@
 #pragma once
 
-#include "../model/State.h"
 #include <memory>
+
+namespace model
+{
+	class State;
+}
 
 namespace action
 {

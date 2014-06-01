@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="action\Action.h" />
+    <ClInclude Include="action\MoveTo.h" />
     <ClInclude Include="heuristic\Heuristic.h" />
     <ClInclude Include="model\ChessBoard.h" />
     <ClInclude Include="model\ChessMan.h" />
@@ -22,6 +23,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="action\Action.cpp" />
+    <ClCompile Include="action\MoveTo.cpp" />
     <ClCompile Include="heuristic\Heuristic.cpp" />
     <ClCompile Include="model\ChessBoard.cpp" />
     <ClCompile Include="model\ChessMan.cpp" />

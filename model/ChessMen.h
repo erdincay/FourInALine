@@ -2,15 +2,22 @@
 
 #include <unordered_map>
 #include "Coordinater.h"
-#include "ChessMan.h"
 
 namespace model
 {
-	class ChessMen : public std::unordered_map<Coordinater, ChessMan, KeyHasher>
+	class ChessMan;
+
+	typedef std::unordered_map<Coordinater, std::shared_ptr<ChessMan>, Coordinater::KeyHasher> typeChessMap;
+
+	class ChessMen : public typeChessMap
 	{
 	public:
 		ChessMen();
+		ChessMen(const ChessMen & oth);
 		virtual ~ChessMen();
+
+		bool AddChessMan(Coordinater destination, bool side);
+
 	};
 
 }

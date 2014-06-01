@@ -24,6 +24,12 @@ namespace model
 		y_ = tolower(y) - 'a' + 1;
 	}
 
+	Coordinater::Coordinater(const Coordinater & oth)
+	{
+		this->x_ = oth.x_;
+		this->y_ = oth.y_;
+	}
+
 	Coordinater::~Coordinater()
 	{
 

@@ -1,5 +1,6 @@
 #include "Minimax.h"
 #include "../model/ChessBoard.h"
+#include "../action/Action.h"
 
 namespace solution
 {
@@ -24,10 +25,10 @@ namespace solution
 	{
 		if (s->IsTerminal())
 		{
-			return make_pair(heuristic_->eval(s), shared_ptr<Action>());
+			return make_pair(heuristic_->eval(s), shared_ptr<Action>(NULL));
 		}
 
-		auto v = make_pair(numeric_limits<typeEval>::min(), shared_ptr<Action>());
+		auto v = make_pair(numeric_limits<typeEval>::min(), shared_ptr<Action>(NULL));
 
 		for (auto action : heuristic_->generateActions(s))
 		{
@@ -51,10 +52,10 @@ namespace solution
 	{
 		if (s->IsTerminal())
 		{
-			return make_pair(heuristic_->eval(s), shared_ptr<Action>());
+			return make_pair(heuristic_->eval(s), shared_ptr<Action>(NULL));
 		}
 
-		auto v = make_pair(numeric_limits<typeEval>::min(), shared_ptr<Action>());
+		auto v = make_pair(numeric_limits<typeEval>::min(), shared_ptr<Action>(NULL));
 
 		for (auto action : heuristic_->generateActions(s))
 		{

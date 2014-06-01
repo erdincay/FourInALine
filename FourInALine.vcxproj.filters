@@ -63,6 +63,9 @@
     <ClInclude Include="heuristic\Heuristic.h">
       <Filter>Header Files\heuristic</Filter>
     </ClInclude>
+    <ClInclude Include="action\MoveTo.h">
+      <Filter>Header Files\action</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="model\ChessMan.cpp">
@@ -91,6 +94,9 @@
     </ClCompile>
     <ClCompile Include="heuristic\Heuristic.cpp">
       <Filter>Source Files\heuristic</Filter>
+    </ClCompile>
+    <ClCompile Include="action\MoveTo.cpp">
+      <Filter>Source Files\action</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,14 +1,22 @@
 #pragma once
 
-#include "../model/State.h"
-#include "../action/Action.h"
 #include <memory>
 #include <vector>
 
-typedef int typeEval;
+namespace model
+{
+	class State;
+}
+
+namespace action
+{
+	class Action;
+}
 
 namespace heuristic
 {
+	typedef int typeEval;
+
 	class Heuristic
 	{
 	public:

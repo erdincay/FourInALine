@@ -9,9 +9,12 @@ namespace model
 	{
 	public:
 		ChessBoard(int size);
+		ChessBoard(const ChessBoard & oth);
 		virtual ~ChessBoard();
 
 		bool IsTerminal();
+
+		bool NewChess(Coordinater coord, bool side);
 
 	private:
 		int size_;

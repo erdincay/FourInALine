@@ -7,12 +7,13 @@ namespace model
 	class ChessMan
 	{
 	public:
-		ChessMan(Coordinater c, bool mine);
+		ChessMan(Coordinater c, bool side);
+		ChessMan(const ChessMan & oth);
 		~ChessMan();
 		
 	private:
-		bool mine_;
-		Coordinater coord;
+		bool side_;
+		Coordinater coord_;
 	};
 
 }
