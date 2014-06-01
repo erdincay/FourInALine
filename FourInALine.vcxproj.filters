@@ -66,6 +66,12 @@
     <ClInclude Include="action\MoveTo.h">
       <Filter>Header Files\action</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="model\ChessLinear.h">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="model\ChessMan.cpp">
@@ -98,5 +104,13 @@
     <ClCompile Include="action\MoveTo.cpp">
       <Filter>Source Files\action</Filter>
     </ClCompile>
+    <ClCompile Include="model\ChessLinear.cpp">
+      <Filter>Source Files\model</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="FourInALine.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

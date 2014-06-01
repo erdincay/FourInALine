@@ -15,10 +15,12 @@
     <ClInclude Include="action\MoveTo.h" />
     <ClInclude Include="heuristic\Heuristic.h" />
     <ClInclude Include="model\ChessBoard.h" />
+    <ClInclude Include="model\ChessLinear.h" />
     <ClInclude Include="model\ChessMan.h" />
     <ClInclude Include="model\ChessMen.h" />
     <ClInclude Include="model\Coordinater.h" />
     <ClInclude Include="model\State.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="solution\Minimax.h" />
   </ItemGroup>
   <ItemGroup>
@@ -26,12 +28,16 @@
     <ClCompile Include="action\MoveTo.cpp" />
     <ClCompile Include="heuristic\Heuristic.cpp" />
     <ClCompile Include="model\ChessBoard.cpp" />
+    <ClCompile Include="model\ChessLinear.cpp" />
     <ClCompile Include="model\ChessMan.cpp" />
     <ClCompile Include="model\ChessMen.cpp" />
     <ClCompile Include="model\Coordinater.cpp" />
     <ClCompile Include="model\State.cpp" />
     <ClCompile Include="solution\4InLine.cpp" />
     <ClCompile Include="solution\Minimax.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="FourInALine.rc" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{21AC6C95-C94B-4682-BE1C-9229162E2741}</ProjectGuid>

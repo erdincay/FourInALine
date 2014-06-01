@@ -8,7 +8,7 @@ namespace model
 	class ChessBoard : public State
 	{
 	public:
-		ChessBoard(int size);
+		ChessBoard(int size, int goalSize);
 		ChessBoard(const ChessBoard & oth);
 		virtual ~ChessBoard();
 
@@ -18,6 +18,7 @@ namespace model
 
 	private:
 		int size_;
+		int goalSize_;
 		ChessMen pieces_;
 	};
 }

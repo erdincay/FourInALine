@@ -9,9 +9,9 @@ namespace solution
 	using namespace model;
 	using namespace action;
 
-	Minimax::Minimax(int size, shared_ptr<Heuristic> h)
+	Minimax::Minimax(int size, int goalSize, shared_ptr<Heuristic> h)
 		:heuristic_(h),
-		borad_(shared_ptr<State>(new ChessBoard(size)))
+		borad_(shared_ptr<State>(new ChessBoard(size, goalSize)))
 	{
 
 	}

@@ -1,23 +1,28 @@
 #include "ChessBoard.h"
+#include "ChessMan.h"
 
 namespace model
 {
-	ChessBoard::ChessBoard(int size)
+	using namespace std;
+
+	ChessBoard::ChessBoard(int size, int goalSize)
 		:size_(size),
+		goalSize_(goalSize),
 		pieces_()
+	{
+
+	}
+
+	ChessBoard::ChessBoard(const ChessBoard & oth)
+		:size_(oth.size_),
+		goalSize_(oth.goalSize_),
+		pieces_(oth.pieces_)
 	{
 
 	}
 
 	ChessBoard::~ChessBoard()
 	{
-	}
-
-	ChessBoard::ChessBoard(const ChessBoard & oth)
-		:size_(oth.size_),
-		pieces_(oth.pieces_)
-	{
-
 	}
 
 	bool ChessBoard::NewChess(Coordinater coord, bool side)
@@ -37,6 +42,6 @@ namespace model
 			return true;
 		}
 
-		return false;
+		return pieces_.IsTerminal(goalSize_);
 	}
 }

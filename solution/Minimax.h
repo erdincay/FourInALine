@@ -19,7 +19,7 @@ namespace solution
 	class Minimax
 	{
 	public:
-		Minimax(int size, std::shared_ptr<heuristic::Heuristic> h);
+		Minimax(int size, int goalSize, std::shared_ptr<heuristic::Heuristic> h);
 		~Minimax();
 
 		std::shared_ptr<action::Action> Alpha_Beta_Search(std::shared_ptr<model::State> s);
