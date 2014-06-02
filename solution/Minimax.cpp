@@ -22,7 +22,7 @@ namespace solution
 	{
 	}
 
-	pair<typeEval, shared_ptr<action::Action>> Minimax::Max_Value(shared_ptr<model::State> s, typeEval alpha, typeEval beta)
+	pair<typeEval, shared_ptr<action::Action>> Minimax::Max_Value(shared_ptr<model::State> s, typeEval alpha, typeEval beta, int deep)
 	{
 		if (s->IsTerminal())
 		{
@@ -34,7 +34,7 @@ namespace solution
 		for (auto action : heuristic_->generateActions(s, true))
 		{
 			shared_ptr<State> newState = action->act(s);
-			auto newV = Min_Value(newState, alpha, beta);
+			auto newV = Min_Value(newState, alpha, beta, ++deep);
 			newV.second = action;
 
 			v = v.first > newV.first ? v : newV;
@@ -50,7 +50,7 @@ namespace solution
 		return v;
 	}
 
-	pair<typeEval, shared_ptr<action::Action>> Minimax::Min_Value(shared_ptr<model::State> s, typeEval alpha, typeEval beta)
+	pair<typeEval, shared_ptr<action::Action>> Minimax::Min_Value(shared_ptr<model::State> s, typeEval alpha, typeEval beta, int deep)
 	{
 		if (s->IsTerminal())
 		{
@@ -62,7 +62,7 @@ namespace solution
 		for (auto action : heuristic_->generateActions(s, false))
 		{
 			shared_ptr<State> newState = action->act(s);
-			auto newV = Max_Value(newState, alpha, beta);
+			auto newV = Max_Value(newState, alpha, beta, ++deep);
 			newV.second = action;
 
 			v = v.first < newV.first ? v : newV;
@@ -80,7 +80,7 @@ namespace solution
 
 	shared_ptr<Action> Minimax::Alpha_Beta_Search(shared_ptr<model::State> s)
 	{
-		return Max_Value(s, numeric_limits<typeEval>::min(), numeric_limits<typeEval>::max()).second;
+		return Max_Value(s, numeric_limits<typeEval>::min(), numeric_limits<typeEval>::max(), 0).second;
 	}
 
 	void Minimax::Run() 

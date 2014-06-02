@@ -27,8 +27,8 @@ namespace solution
 		void Run();
 
 	protected:
-		std::pair<heuristic::typeEval, std::shared_ptr<action::Action>> Max_Value(std::shared_ptr<model::State> s, heuristic::typeEval alpha, heuristic::typeEval beta);
-		std::pair<heuristic::typeEval, std::shared_ptr<action::Action>> Min_Value(std::shared_ptr<model::State> s, heuristic::typeEval alpha, heuristic::typeEval beta);
+		std::pair<heuristic::typeEval, std::shared_ptr<action::Action>> Max_Value(std::shared_ptr<model::State> s, heuristic::typeEval alpha, heuristic::typeEval beta, int deep);
+		std::pair<heuristic::typeEval, std::shared_ptr<action::Action>> Min_Value(std::shared_ptr<model::State> s, heuristic::typeEval alpha, heuristic::typeEval beta, int deep);
 
 	private:
 		std::shared_ptr<model::State> borad_;
