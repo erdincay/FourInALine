@@ -23,8 +23,8 @@ namespace heuristic
 		Heuristic();
 		virtual ~Heuristic();
 
-		virtual typeEval eval(std::shared_ptr<model::State> s) = 0;
-		virtual std::vector<std::shared_ptr<action::Action>> generateActions(std::shared_ptr<model::State> s) = 0;
+		virtual typeEval eval(std::shared_ptr<model::State> s, bool side) = 0;
+		virtual std::vector<std::shared_ptr<action::Action>> generateActions(std::shared_ptr<model::State> s, bool side) = 0;
 	};
 
 }

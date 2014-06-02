@@ -20,7 +20,7 @@ namespace solution
 	class Minimax
 	{
 	public:
-		Minimax(int size, int goalSize, std::shared_ptr<heuristic::Heuristic> h);
+		Minimax(int size, int goalSize, std::shared_ptr<heuristic::Heuristic> h, boost::asio::io_service & io_service);
 		~Minimax();
 
 		std::shared_ptr<action::Action> Alpha_Beta_Search(std::shared_ptr<model::State> s);
@@ -33,7 +33,7 @@ namespace solution
 	private:
 		std::shared_ptr<model::State> borad_;
 		std::shared_ptr<heuristic::Heuristic> heuristic_;
-		std::shared_ptr<boost::asio::deadline_timer> timer_;
+		boost::asio::deadline_timer timer_;
 	};
 }
 

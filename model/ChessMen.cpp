@@ -10,7 +10,7 @@ namespace model
 	const string strOppositeCol = "oppositeCol";
 
 	ChessMen::ChessMen()
-		:statistics_(shared_ptr<typeStatistics>(new typeStatistics()))
+		:linear_statistics_(shared_ptr<typeStatistics>(new typeStatistics()))
 	{
 		
 	}
@@ -22,7 +22,7 @@ namespace model
 			this->at(elem.first) = shared_ptr<ChessMan>(new ChessMan(*elem.second));
 		}
 
-		for (auto statistic : *(oth.statistics_))
+		for (auto statistic : *(oth.linear_statistics_))
 		{
 			auto newStatistic = shared_ptr<typeStatistic>(new typeStatistic);
 			for (auto linears : *(statistic.second))
@@ -35,7 +35,7 @@ namespace model
 				}
 				newStatistic->at(linears.first) = newLinears;
 			}
-			statistics_->at(statistic.first) = newStatistic;
+			linear_statistics_->at(statistic.first) = newStatistic;
 		}
 	}
 
@@ -45,7 +45,7 @@ namespace model
 
 	std::shared_ptr<typeStatistics> ChessMen::getStatistics()
 	{
-		return statistics_;
+		return linear_statistics_;
 	}
 
 	bool ChessMen::AddChessMan(Coordinater coord, bool side)
@@ -67,7 +67,7 @@ namespace model
 
 	bool ChessMen::IsTerminal(int goalSize)
 	{
-		for (auto statistic : *statistics_)
+		for (auto statistic : *linear_statistics_)
 		{
 			for (auto linears : *(statistic.second))
 			{
@@ -128,8 +128,8 @@ namespace model
 			return;
 		}
 
-		auto myStatistics = statistics_->find(typeTag);
-		if (myStatistics == statistics_->end())
+		auto myStatistics = linear_statistics_->find(typeTag);
+		if (myStatistics == linear_statistics_->end())
 		{
 			shared_ptr<ChessLinear> linear = shared_ptr<ChessLinear>(new ChessLinear(chess));
 
@@ -139,7 +139,7 @@ namespace model
 			shared_ptr<typeStatistic> statistic = shared_ptr<typeStatistic>(new typeStatistic());
 			statistic->at(linearTag) = linears;
 
-			statistics_->at(typeTag) = statistic;
+			linear_statistics_->at(typeTag) = statistic;
 		}
 		else
 		{
@@ -179,17 +179,17 @@ namespace model
 		}
 	}
 
-	void ChessMen::Statistic(shared_ptr<ChessMan> chess)
+	void ChessMen::Statistic(shared_ptr<ChessMan> newChess)
 	{
-		if (chess->getSide())
+		if (newChess->getSide())
 		{
-			StatisticChess(chess, strMyRow, adjacent::row_adjacent);
-			StatisticChess(chess, strMyCol, adjacent::col_adjacent);
+			StatisticChess(newChess, strMyRow, adjacent::row_adjacent);
+			StatisticChess(newChess, strMyCol, adjacent::col_adjacent);
 		}
 		else
 		{
-			StatisticChess(chess, strOppositeRow, adjacent::row_adjacent);
-			StatisticChess(chess, strOppositeCol, adjacent::col_adjacent);
+			StatisticChess(newChess, strOppositeRow, adjacent::row_adjacent);
+			StatisticChess(newChess, strOppositeCol, adjacent::col_adjacent);
 		}
 	}
 }

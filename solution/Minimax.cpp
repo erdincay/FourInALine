@@ -9,9 +9,10 @@ namespace solution
 	using namespace model;
 	using namespace action;
 
-	Minimax::Minimax(int size, int goalSize, shared_ptr<Heuristic> h)
+	Minimax::Minimax(int size, int goalSize, shared_ptr<Heuristic> h, boost::asio::io_service & io_service)
 		:heuristic_(h),
-		borad_(shared_ptr<State>(new ChessBoard(size, goalSize)))
+		borad_(shared_ptr<State>(new ChessBoard(size, goalSize))),
+		timer_(io_service)
 	{
 
 	}
@@ -25,17 +26,18 @@ namespace solution
 	{
 		if (s->IsTerminal())
 		{
-			return make_pair(heuristic_->eval(s), shared_ptr<Action>(NULL));
+			return make_pair(heuristic_->eval(s,true), shared_ptr<Action>(NULL));
 		}
 
 		auto v = make_pair(numeric_limits<typeEval>::min(), shared_ptr<Action>(NULL));
 
-		for (auto action : heuristic_->generateActions(s))
+		for (auto action : heuristic_->generateActions(s, true))
 		{
-			v.second = action;
 			shared_ptr<State> newState = action->act(s);
 			auto newV = Min_Value(newState, alpha, beta);
-			v.first = v.first > newV.first ? v.first : newV.first;
+			newV.second = action;
+
+			v = v.first > newV.first ? v : newV;
 
 			if (v.first >= beta)
 			{
@@ -52,17 +54,18 @@ namespace solution
 	{
 		if (s->IsTerminal())
 		{
-			return make_pair(heuristic_->eval(s), shared_ptr<Action>(NULL));
+			return make_pair(heuristic_->eval(s, false), shared_ptr<Action>(NULL));
 		}
 
 		auto v = make_pair(numeric_limits<typeEval>::min(), shared_ptr<Action>(NULL));
 
-		for (auto action : heuristic_->generateActions(s))
+		for (auto action : heuristic_->generateActions(s, false))
 		{
-			v.second = action;
 			shared_ptr<State> newState = action->act(s);
 			auto newV = Max_Value(newState, alpha, beta);
-			v.first = v.first < newV.first ? v.first : newV.first;
+			newV.second = action;
+
+			v = v.first < newV.first ? v : newV;
 
 			if (v.first <= alpha)
 			{

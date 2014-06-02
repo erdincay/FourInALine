@@ -27,10 +27,10 @@ namespace model
 	private:
 		std::shared_ptr<typeChessLinears> RefactoryLinears(std::shared_ptr<ChessLinear> combinedLinear, std::shared_ptr<typeChessLinears> linears, adjacent reqDirection);
 		void StatisticChess(std::shared_ptr<ChessMan> chess, std::string typeTag, adjacent reqDirection);
-		void Statistic(std::shared_ptr<ChessMan> chess);
+		void Statistic(std::shared_ptr<ChessMan> newChess);
 
 	private:
-		std::shared_ptr<typeStatistics> statistics_;
+		std::shared_ptr<typeStatistics> linear_statistics_;
 
 	};
 
