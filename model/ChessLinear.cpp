@@ -204,4 +204,9 @@ namespace model
 
 		return shared_ptr<ChessLinear>(NULL);
 	}
+
+	avarible getAvarible()
+	{
+		return avarible::none_avarible;
+	}
 }

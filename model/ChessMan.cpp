@@ -52,4 +52,6 @@ namespace model
 		
 		return make_pair(adjacent::none_adjacent,false);
 	}
+
+	
 }

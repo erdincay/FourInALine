@@ -2,7 +2,7 @@
 
 #include "../heuristic/Heuristic.h"
 #include <memory>
-#include <boost/asio/deadline_timer.hpp>
+//#include <boost/asio/deadline_timer.hpp>
 
 namespace model
 {
@@ -20,7 +20,8 @@ namespace solution
 	class Minimax
 	{
 	public:
-		Minimax(int size, int goalSize, std::shared_ptr<heuristic::Heuristic> h, boost::asio::io_service & io_service);
+		//Minimax(int size, int goalSize, std::shared_ptr<heuristic::Heuristic> h, boost::asio::io_service & io_service);
+		Minimax(int size, int goalSize, std::shared_ptr<heuristic::Heuristic> h);
 		~Minimax();
 
 		std::shared_ptr<action::Action> Alpha_Beta_Search(std::shared_ptr<model::State> s);
@@ -33,7 +34,7 @@ namespace solution
 	private:
 		std::shared_ptr<model::State> borad_;
 		std::shared_ptr<heuristic::Heuristic> heuristic_;
-		boost::asio::deadline_timer timer_;
+		//boost::asio::deadline_timer timer_;
 	};
 }
 

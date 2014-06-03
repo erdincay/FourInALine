@@ -1,0 +1,20 @@
+﻿------ Build started: Project: FourInALine, Configuration: Debug Win32 ------
+  Minimax.cpp
+  Please define _WIN32_WINNT or _WIN32_WINDOWS appropriately. For example:
+  - add -D_WIN32_WINNT=0x0501 to the compiler command line; or
+  - add _WIN32_WINNT=0x0501 to your project's Preprocessor Definitions.
+  Assuming _WIN32_WINNT=0x0501 (i.e. Windows XP target).
+  4InLine.cpp
+  State.cpp
+  Coordinater.cpp
+  ChessMen.cpp
+  ChessMan.cpp
+  ChessLinear.cpp
+  ChessBoard.cpp
+c:\users\mark lai\documents\fourinaline\model\chessboard.cpp(40): warning C4018: '>=' : signed/unsigned mismatch
+  Heuristic.cpp
+  MoveTo.cpp
+  Action.cpp
+  Generating Code...
+  FourInALine.vcxproj -> C:\Users\Mark Lai\Documents\fourinaline\Debug\FourInALine.exe
+========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========

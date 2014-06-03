@@ -16,9 +16,11 @@ namespace model
 
 		bool NewChess(Coordinater coord, bool side);
 
+		std::shared_ptr<ChessMen> getPieces();
+
 	private:
 		int size_;
 		int goalSize_;
-		ChessMen pieces_;
+		std::shared_ptr<ChessMen> pieces_;
 	};
 }

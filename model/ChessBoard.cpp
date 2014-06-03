@@ -8,7 +8,7 @@ namespace model
 	ChessBoard::ChessBoard(int size, int goalSize)
 		:size_(size),
 		goalSize_(goalSize),
-		pieces_()
+		pieces_(shared_ptr<ChessMen>(new ChessMen()))
 	{
 
 	}
@@ -16,7 +16,7 @@ namespace model
 	ChessBoard::ChessBoard(const ChessBoard & oth)
 		:size_(oth.size_),
 		goalSize_(oth.goalSize_),
-		pieces_(oth.pieces_)
+		pieces_(shared_ptr<ChessMen>(new ChessMen(*oth.pieces_)))
 	{
 
 	}
@@ -32,16 +32,21 @@ namespace model
 			return false;
 		}
 
-		return pieces_.AddChessMan(coord, side);
+		return pieces_->AddChessMan(coord, side);
 	}
 
 	bool ChessBoard::IsTerminal()
 	{
-		if (pieces_.size() >= size_*size_)
+		if (pieces_->size() >= size_*size_)
 		{
 			return true;
 		}
 
-		return pieces_.IsTerminal(goalSize_);
+		return pieces_->IsTerminal(goalSize_);
+	}
+
+	shared_ptr<ChessMen> ChessBoard::getPieces()
+	{
+		return pieces_;
 	}
 }

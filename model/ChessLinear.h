@@ -5,6 +5,14 @@
 
 namespace model
 {
+	enum class avarible
+	{
+		left_avarible,
+		right_avarible,
+		both_avarible,
+		none_avarible
+	};
+
 	class ChessLinear
 	{
 	public:
@@ -24,6 +32,8 @@ namespace model
 		std::shared_ptr<ChessMan> getEnd();
 
 		int size();
+
+		avarible getAvarible();
 
 	private:
 		std::shared_ptr<ChessMan> start_;

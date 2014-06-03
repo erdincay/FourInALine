@@ -9,10 +9,10 @@ namespace solution
 	using namespace model;
 	using namespace action;
 
-	Minimax::Minimax(int size, int goalSize, shared_ptr<Heuristic> h, boost::asio::io_service & io_service)
+	Minimax::Minimax(int size, int goalSize, shared_ptr<Heuristic> h)
 		:heuristic_(h),
-		borad_(shared_ptr<State>(new ChessBoard(size, goalSize))),
-		timer_(io_service)
+		borad_(shared_ptr<State>(new ChessBoard(size, goalSize)))//,
+		//timer_(io_service)
 	{
 
 	}

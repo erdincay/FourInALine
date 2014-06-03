@@ -66,11 +66,14 @@
     <ClInclude Include="action\MoveTo.h">
       <Filter>Header Files\action</Filter>
     </ClInclude>
+    <ClInclude Include="model\ChessLinear.h">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="model\ChessLinear.h">
-      <Filter>Header Files\model</Filter>
+    <ClInclude Include="heuristic\EvaluationWeight.h">
+      <Filter>Header Files\heuristic</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -107,9 +110,12 @@
     <ClCompile Include="model\ChessLinear.cpp">
       <Filter>Source Files\model</Filter>
     </ClCompile>
+    <ClCompile Include="heuristic\EvaluationWeight.cpp">
+      <Filter>Source Files\heuristic</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="FourInALine.rc">
+    <ResourceCompile Include="Resource.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
   </ItemGroup>
