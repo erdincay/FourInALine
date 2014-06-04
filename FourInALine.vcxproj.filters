@@ -72,8 +72,13 @@
     <ClInclude Include="heuristic\EvaluationWeight.h">
       <Filter>Header Files\heuristic</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
+=======
+    <ClInclude Include="solution\Timer.h">
+      <Filter>Header Files\solution</Filter>
+>>>>>>> f14fff54e25f6d11b524d60ee3d37a2f17d06719
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -112,6 +117,9 @@
     </ClCompile>
     <ClCompile Include="heuristic\EvaluationWeight.cpp">
       <Filter>Source Files\heuristic</Filter>
+    </ClCompile>
+    <ClCompile Include="solution\Timer.cpp">
+      <Filter>Source Files\solution</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

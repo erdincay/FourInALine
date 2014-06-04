@@ -1,6 +1,7 @@
 #include "Minimax.h"
 #include "../model/ChessBoard.h"
 #include "../action/Action.h"
+#include "Timer.h"
 
 namespace solution
 {
@@ -9,10 +10,10 @@ namespace solution
 	using namespace model;
 	using namespace action;
 
-	Minimax::Minimax(int size, int goalSize, shared_ptr<Heuristic> h)
+	Minimax::Minimax(int size, int goalSize, shared_ptr<Heuristic> h, int time_duration /* unit: seconds*/)
 		:heuristic_(h),
-		borad_(shared_ptr<State>(new ChessBoard(size, goalSize)))//,
-		//timer_(io_service)
+		borad_(shared_ptr<State>(new ChessBoard(size, goalSize))),
+		time_duration_(time_duration)
 	{
 
 	}
@@ -22,9 +23,9 @@ namespace solution
 	{
 	}
 
-	pair<typeEval, shared_ptr<action::Action>> Minimax::Max_Value(shared_ptr<model::State> s, typeEval alpha, typeEval beta, int deep)
+	pair<typeEval, shared_ptr<action::Action>> Minimax::Max_Value(shared_ptr<model::State> s, typeEval alpha, typeEval beta, int deep, Timer & timer)
 	{
-		if (s->IsTerminal())
+		if (s->IsTerminal() || timer.TimeOver())
 		{
 			return make_pair(heuristic_->eval(s,true), shared_ptr<Action>(NULL));
 		}
@@ -34,7 +35,7 @@ namespace solution
 		for (auto action : heuristic_->generateActions(s, true))
 		{
 			shared_ptr<State> newState = action->act(s);
-			auto newV = Min_Value(newState, alpha, beta, ++deep);
+			auto newV = Min_Value(newState, alpha, beta, ++deep, timer);
 			newV.second = action;
 
 			v = v.first > newV.first ? v : newV;
@@ -50,9 +51,9 @@ namespace solution
 		return v;
 	}
 
-	pair<typeEval, shared_ptr<action::Action>> Minimax::Min_Value(shared_ptr<model::State> s, typeEval alpha, typeEval beta, int deep)
+	pair<typeEval, shared_ptr<action::Action>> Minimax::Min_Value(shared_ptr<model::State> s, typeEval alpha, typeEval beta, int deep, Timer & timer)
 	{
-		if (s->IsTerminal())
+		if (s->IsTerminal() || timer.TimeOver())
 		{
 			return make_pair(heuristic_->eval(s, false), shared_ptr<Action>(NULL));
 		}
@@ -62,7 +63,7 @@ namespace solution
 		for (auto action : heuristic_->generateActions(s, false))
 		{
 			shared_ptr<State> newState = action->act(s);
-			auto newV = Max_Value(newState, alpha, beta, ++deep);
+			auto newV = Max_Value(newState, alpha, beta, ++deep, timer);
 			newV.second = action;
 
 			v = v.first < newV.first ? v : newV;
@@ -80,7 +81,8 @@ namespace solution
 
 	shared_ptr<Action> Minimax::Alpha_Beta_Search(shared_ptr<model::State> s)
 	{
-		return Max_Value(s, numeric_limits<typeEval>::min(), numeric_limits<typeEval>::max(), 0).second;
+		Timer timer(time_duration_ * 1000 /*timer unit millisecond*/);
+		return Max_Value(s, numeric_limits<typeEval>::min(), numeric_limits<typeEval>::max(), 0, timer).second;
 	}
 
 	void Minimax::Run() 

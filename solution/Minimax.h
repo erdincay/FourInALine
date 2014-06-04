@@ -2,7 +2,6 @@
 
 #include "../heuristic/Heuristic.h"
 #include <memory>
-//#include <boost/asio/deadline_timer.hpp>
 
 namespace model
 {
@@ -17,24 +16,25 @@ namespace action
 
 namespace solution
 {
+	class Timer;
+
 	class Minimax
 	{
 	public:
-		//Minimax(int size, int goalSize, std::shared_ptr<heuristic::Heuristic> h, boost::asio::io_service & io_service);
-		Minimax(int size, int goalSize, std::shared_ptr<heuristic::Heuristic> h);
+		Minimax(int size, int goalSize, std::shared_ptr<heuristic::Heuristic> h, int time_duration /* unit: seconds*/);
 		~Minimax();
 
 		std::shared_ptr<action::Action> Alpha_Beta_Search(std::shared_ptr<model::State> s);
 		void Run();
 
 	protected:
-		std::pair<heuristic::typeEval, std::shared_ptr<action::Action>> Max_Value(std::shared_ptr<model::State> s, heuristic::typeEval alpha, heuristic::typeEval beta, int deep);
-		std::pair<heuristic::typeEval, std::shared_ptr<action::Action>> Min_Value(std::shared_ptr<model::State> s, heuristic::typeEval alpha, heuristic::typeEval beta, int deep);
+		std::pair<heuristic::typeEval, std::shared_ptr<action::Action>> Max_Value(std::shared_ptr<model::State> s, heuristic::typeEval alpha, heuristic::typeEval beta, int deep, Timer & timer);
+		std::pair<heuristic::typeEval, std::shared_ptr<action::Action>> Min_Value(std::shared_ptr<model::State> s, heuristic::typeEval alpha, heuristic::typeEval beta, int deep, Timer & timer);
 
 	private:
 		std::shared_ptr<model::State> borad_;
 		std::shared_ptr<heuristic::Heuristic> heuristic_;
-		//boost::asio::deadline_timer timer_;
+		int time_duration_; /* unit: seconds*/
 	};
 }
 
