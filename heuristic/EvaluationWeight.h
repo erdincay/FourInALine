@@ -1,5 +1,5 @@
 #pragma once
-#include "C:\Users\Mark Lai\Documents\fourinaline\heuristic\Heuristic.h"
+#include "..\heuristic\Heuristic.h"
 
 namespace heuristic
 {
