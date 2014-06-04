@@ -49,4 +49,9 @@ namespace model
 	{
 		return pieces_;
 	}
+
+	avarible getAvarible(std::shared_ptr<ChessLinear> leaner)
+	{
+		return avarible::none_avarible;
+	}
 }

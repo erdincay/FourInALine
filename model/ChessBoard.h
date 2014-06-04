@@ -18,6 +18,8 @@ namespace model
 
 		std::shared_ptr<ChessMen> getPieces();
 
+		avarible getAvarible(std::shared_ptr<ChessLinear> leaner);
+
 	private:
 		int size_;
 		int goalSize_;

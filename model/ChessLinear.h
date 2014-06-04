@@ -33,8 +33,6 @@ namespace model
 
 		int size();
 
-		avarible getAvarible();
-
 	private:
 		std::shared_ptr<ChessMan> start_;
 		std::shared_ptr<ChessMan> end_;
