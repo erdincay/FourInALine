@@ -75,6 +75,9 @@
     <ClInclude Include="heuristic\EvaluationWeight.h">
       <Filter>Header Files\heuristic</Filter>
     </ClInclude>
+    <ClInclude Include="solution\Timer.h">
+      <Filter>Header Files\solution</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="model\ChessMan.cpp">
@@ -112,6 +115,9 @@
     </ClCompile>
     <ClCompile Include="heuristic\EvaluationWeight.cpp">
       <Filter>Source Files\heuristic</Filter>
+    </ClCompile>
+    <ClCompile Include="solution\Timer.cpp">
+      <Filter>Source Files\solution</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
