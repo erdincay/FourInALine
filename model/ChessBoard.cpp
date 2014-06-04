@@ -4,6 +4,9 @@
 namespace model
 {
 	using namespace std;
+	using namespace boost::logic;
+
+	const int startIndex = 1;
 
 	ChessBoard::ChessBoard(int size, int goalSize)
 		:size_(size),
@@ -50,8 +53,96 @@ namespace model
 		return pieces_;
 	}
 
-	avarible getAvarible(std::shared_ptr<ChessLinear> leaner)
+	bool ChessBoard::InsideBoundary(Coordinater coord)
 	{
-		return avarible::none_avarible;
+		if (coord.getX() >= startIndex && coord.getY() >= startIndex && coord.getX() < startIndex + size_ && coord.getY() < startIndex + size_)
+		{
+			return true;
+		}
+
+		return false;
+	}
+
+	tribool ChessBoard::getLocationType(Coordinater coord)
+	{
+		auto ret = pieces_->find(coord);
+		if (ret == pieces_->end())
+		{
+			return indeterminate;
+		}
+		else
+		{
+			return (*ret).second->getSide();
+		}
+	}
+
+	avarible ChessBoard::getLinearAvailable(std::shared_ptr<ChessLinear> linear)
+	{
+		auto sCoord = linear->getStart()->getCoord();
+		auto eCoord = linear->getEnd()->getCoord();
+		auto direction = linear->getDirection();
+
+		Coordinater before(0, 0);
+		Coordinater after(0, 0);
+
+		if (direction == adjacent::row_adjacent)
+		{
+			before = Coordinater(sCoord.getX() - 1, sCoord.getY());
+			after = Coordinater(eCoord.getX() + 1, eCoord.getY());
+		}
+		else if (direction == adjacent::col_adjacent)
+		{
+			before = Coordinater(sCoord.getX(), sCoord.getY() - 1);
+			after = Coordinater(eCoord.getX(), eCoord.getY() + 1);
+		}
+		else
+		{
+			return avarible::error;
+		}
+
+		bool beforeAvailable = false;
+		if (InsideBoundary(before))
+		{
+			auto ret = getLocationType(before);
+			if (ret == indeterminate)
+			{
+				beforeAvailable = true;
+			}
+			else if (ret == linear->getStart()->getSide())
+			{
+				return avarible::error;
+			}
+		}
+
+		bool afterAvailable = false;
+		if (InsideBoundary(after))
+		{
+			auto ret = getLocationType(after);
+			if (ret == indeterminate)
+			{
+				afterAvailable = true;
+			}
+			else if (ret == linear->getEnd()->getSide())
+			{
+				return avarible::error;
+			}
+		}
+
+		if (beforeAvailable && afterAvailable)
+		{
+			return avarible::both_avarible;
+		}
+		else if (beforeAvailable && !afterAvailable)
+		{
+			return avarible::before_avarible;
+		}
+		else if (!beforeAvailable && afterAvailable)
+		{
+			return avarible::after_avarible;
+		}
+		else
+		{
+			return avarible::none_avarible;
+		}
 	}
 }

@@ -2,9 +2,19 @@
 
 #include "State.h"
 #include "ChessMen.h"
+#include <boost/logic/tribool.hpp>
 
 namespace model
 {
+	enum class avarible
+	{
+		before_avarible,
+		after_avarible,
+		both_avarible,
+		none_avarible,
+		error
+	};
+
 	class ChessBoard : public State
 	{
 	public:
@@ -18,7 +28,9 @@ namespace model
 
 		std::shared_ptr<ChessMen> getPieces();
 
-		avarible getAvarible(std::shared_ptr<ChessLinear> leaner);
+		avarible getLinearAvailable(std::shared_ptr<ChessLinear> linear);
+		bool InsideBoundary(Coordinater coord);
+		boost::logic::tribool getLocationType(Coordinater coord);
 
 	private:
 		int size_;
