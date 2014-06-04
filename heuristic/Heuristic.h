@@ -11,6 +11,7 @@ namespace model
 namespace action
 {
 	class Action;
+	class MoveTo;
 }
 
 namespace heuristic

@@ -5,14 +5,6 @@
 
 namespace model
 {
-	enum class avarible
-	{
-		left_avarible,
-		right_avarible,
-		both_avarible,
-		none_avarible
-	};
-
 	class ChessLinear
 	{
 	public:
