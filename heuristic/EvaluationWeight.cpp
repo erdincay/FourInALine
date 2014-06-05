@@ -3,6 +3,7 @@
 #include "../model/Coordinater.h"
 #include "../action/MoveTo.h"
 #include "../heuristic/Evaluate.h"
+#include <iostream>
 
 namespace heuristic
 {
@@ -32,10 +33,6 @@ namespace heuristic
 			{
 				for (auto linear : *(linears.second))
 				{
-					auto size = linear->size();
-					auto direction = linear->getDirection();
-					auto start = linear->getStart()->getCoord();
-					auto end = linear->getEnd()->getCoord();
 					auto currentSide = linear->getStart()->getSide();
 					auto available = board->getLinearAvailable(linear);
 					Evaluate evaluateFn(linear);
@@ -46,14 +43,14 @@ namespace heuristic
 						{
 						case model::avarible::before_avarible: /* before_avarible and  after_avarible are the same situation */
 						{
-							vector<typeEval> tempEval = evaluateFn.oneAvailable(board, currentSide, 30, 100); // double dead 3 (true side) : 30 , double dead 3 (false side) : 100
+							vector<typeEval> tempEval = evaluateFn.oneAvailable(board, currentSide, 15, 10); // double dead 3 (true side) : 30 , double dead 3 (false side) : 100
 							resultTrueSide += tempEval[0];
 							resultFalseSide += tempEval[1];
 						}
 							break;
 						case model::avarible::after_avarible:
 						{
-							vector<typeEval> tempEval = evaluateFn.oneAvailable(board, currentSide, 30, 100); // double dead 3 (true side) : 30 , double dead 3 (false side) : 100
+							vector<typeEval> tempEval = evaluateFn.oneAvailable(board, currentSide, 15, 10); // double dead 3 (true side) : 30 , double dead 3 (false side) : 100
 							resultTrueSide += tempEval[0];
 							resultFalseSide += tempEval[1];
 						}
@@ -61,7 +58,7 @@ namespace heuristic
 						case model::avarible::both_avarible:
 						{
 							// double live 2 (true side) : 30, double live 2 (false side) : 80, live 2 + dead 3 (true side) : 35 , live 2 + dead 3 (false side) : 85 
-							vector<typeEval> tempEval = evaluateFn.twoAvailable(board, currentSide, side, 30, 80, 35, 85);
+							vector<typeEval> tempEval = evaluateFn.twoAvailable(board, currentSide, side, 15, 10, 15, 10);
 							resultTrueSide += tempEval[0];
 							resultFalseSide += tempEval[1];
 						}
@@ -80,27 +77,27 @@ namespace heuristic
 						}
 						
 					}
-					else // // the next is False
+					else // the next is False
 					{
 						switch (available)
 						{
 						case model::avarible::before_avarible:
 						{
-							vector<typeEval> tempEval = evaluateFn.oneAvailable(board, currentSide, 60, 25);
+							vector<typeEval> tempEval = evaluateFn.oneAvailable(board, currentSide, 10, 25);
 							resultTrueSide += tempEval[0];
 							resultFalseSide += tempEval[1];
 						}
 							break;
 						case model::avarible::after_avarible:
 						{
-							vector<typeEval> tempEval = evaluateFn.oneAvailable(board, currentSide, 60, 25);
+							vector<typeEval> tempEval = evaluateFn.oneAvailable(board, currentSide, 10, 25);
 							resultTrueSide += tempEval[0];
 							resultFalseSide += tempEval[1];
 						}
 							break;
 						case model::avarible::both_avarible:
 						{
-							vector<typeEval> tempEval = evaluateFn.twoAvailable(board, currentSide, side, 50, 30, 55, 35);
+							vector<typeEval> tempEval = evaluateFn.twoAvailable(board, currentSide, side, 10, 25, 10, 25);
 							resultTrueSide += tempEval[0];
 							resultFalseSide += tempEval[1];
 						}
@@ -118,16 +115,16 @@ namespace heuristic
 							break;
 						}
 					}
-					
 				}
 			}
 		}
-
+		//cout << "Side is " << side << endl;
 		//double live 2
 		//double dead 3
 		//dead 3 + live 2
 		//live 3
-		return resultTrueSide - resultFalseSide;
+		//return resultTrueSide - resultFalseSide;
+		return resultTrueSide;
 	}
 
 	unordered_map<Coordinater, shared_ptr<action::Action>, model::Coordinater::KeyHasher> EvaluationWeight::generateActions(shared_ptr<model::State> s, bool side)

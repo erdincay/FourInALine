@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
 
 	while (!("y" == ret || "yes" == ret))
 	{
-		cout << "are your sure to quit ? " << endl;
+		cout << "are your sure to quit ? (y/n) " << endl;
 		cin >> ret;
 		boost::to_lower(ret);
 	}

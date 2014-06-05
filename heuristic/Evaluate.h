@@ -12,11 +12,11 @@ namespace heuristic
 {
 
 	const int ONE_CHESSMAN = 1;
-	const int TWO_CHESSMAN_ONE_AVAILABLE = 3;
+	const int TWO_CHESSMAN_ONE_AVAILABLE = 1;
 	const int TWO_CHESSMAN_BOTH_AVAILABLE = 5;
-	const int THREE_CHESSMAN_ONE_AVAILABLE = 7;
-	const int THREE_CHESEMAN_BOTH_AVAILABLE = 90;
-	const int EXTRA_PLUS = 100;
+	const int THREE_CHESSMAN_ONE_AVAILABLE = 5;
+	const int THREE_CHESEMAN_BOTH_AVAILABLE = 10;
+	const int EXTRA_PLUS = 5;
 
 
 	class Evaluate 
