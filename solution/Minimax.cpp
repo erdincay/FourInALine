@@ -33,7 +33,7 @@ namespace solution
 
 	pair<typeEval, shared_ptr<action::Action>> Minimax::Max_Value(shared_ptr<model::State> s, typeEval alpha, typeEval beta, int deep, Timer & timer)
 	{
-		if (s->IsTerminal() || timer.TimeOver())
+		if (s->IsTerminal() || timer.TimeOver() || finalDeep <= deep)
 		{
 			return make_pair(heuristic_->eval(s,true), shared_ptr<Action>(NULL));
 		}
@@ -62,7 +62,7 @@ namespace solution
 
 	pair<typeEval, shared_ptr<action::Action>> Minimax::Min_Value(shared_ptr<model::State> s, typeEval alpha, typeEval beta, int deep, Timer & timer)
 	{
-		if (s->IsTerminal() || timer.TimeOver())
+		if (s->IsTerminal() || timer.TimeOver() || finalDeep <= deep)
 		{
 			return make_pair(heuristic_->eval(s, false), shared_ptr<Action>(NULL));
 		}
@@ -97,7 +97,14 @@ namespace solution
 	shared_ptr<Action> Minimax::Alpha_Beta_Search(shared_ptr<model::State> s)
 	{
 		Timer timer(time_duration_ * 1000 /*timer unit millisecond*/);
-		return Max_Value(s, numeric_limits<typeEval>::min(), numeric_limits<typeEval>::max(), 0, timer).second;
+		shared_ptr<Action> ret;
+		for (finalDeep = 1; !timer.TimeOver(); finalDeep++)
+		{
+			ret = Max_Value(s, numeric_limits<typeEval>::min(), numeric_limits<typeEval>::max(), 0, timer).second;
+		}
+
+		
+		return ret;
 	}
 
 	shared_ptr<Action> Minimax::Run() 
@@ -114,5 +121,10 @@ namespace solution
 		}
 
 		return bestAction;
+	}
+
+	std::shared_ptr<heuristic::Heuristic> Minimax::getHeuristic()
+	{
+		return heuristic_;
 	}
 }

@@ -29,6 +29,7 @@ namespace solution
 
 		std::shared_ptr<action::Action> Alpha_Beta_Search(std::shared_ptr<model::State> s);
 		std::shared_ptr<action::Action> Run();
+		std::shared_ptr<heuristic::Heuristic> getHeuristic();
 
 	protected:
 		std::pair<heuristic::typeEval, std::shared_ptr<action::Action>> Max_Value(std::shared_ptr<model::State> s, heuristic::typeEval alpha, heuristic::typeEval beta, int deep, Timer & timer);
@@ -38,6 +39,7 @@ namespace solution
 		std::shared_ptr<model::State> borad_;
 		std::shared_ptr<heuristic::Heuristic> heuristic_;
 		int time_duration_; /* unit: seconds*/
+		int finalDeep;
 	};
 }
 

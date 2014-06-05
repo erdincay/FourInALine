@@ -79,6 +79,7 @@ namespace model
 
 	avarible ChessBoard::getLinearAvailable(std::shared_ptr<ChessLinear> linear)
 	{
+		int size = linear->size();
 		auto sCoord = linear->getStart()->getCoord();
 		auto eCoord = linear->getEnd()->getCoord();
 		auto direction = linear->getDirection();
@@ -105,28 +106,28 @@ namespace model
 		if (InsideBoundary(before))
 		{
 			auto ret = getLocationType(before);
-			if (ret == indeterminate)
+			if (indeterminate(ret))
 			{
 				beforeAvailable = true;
 			}
-			else if (ret == linear->getStart()->getSide())
+			/*else if (ret == linear->getStart()->getSide())
 			{
 				return avarible::error;
-			}
+			}*/
 		}
 
 		bool afterAvailable = false;
 		if (InsideBoundary(after))
 		{
 			auto ret = getLocationType(after);
-			if (ret == indeterminate)
+			if (indeterminate(ret))
 			{
 				afterAvailable = true;
 			}
-			else if (ret == linear->getEnd()->getSide())
+			/*else if (ret == linear->getEnd()->getSide())
 			{
 				return avarible::error;
-			}
+			}*/
 		}
 
 		if (beforeAvailable && afterAvailable)
@@ -155,6 +156,7 @@ namespace model
 	string ChessBoard::toString()
 	{
 		ostringstream ostr;
+		
 		for (int i = 0; i <= getSize(); i++)
 		{
 			if (i > 0)

@@ -22,6 +22,7 @@ namespace solution
 
 	private:
 		std::shared_ptr<Minimax> sln_;
+		
 	};
 
 }

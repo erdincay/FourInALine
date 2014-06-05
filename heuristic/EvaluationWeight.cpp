@@ -44,6 +44,7 @@ namespace heuristic
 						case model::avarible::before_avarible: /* before_avarible and  after_avarible are the same situation */
 						{
 							vector<typeEval> tempEval = evaluateFn.oneAvailable(board, currentSide, 15, 10); // double dead 3 (true side) : 30 , double dead 3 (false side) : 100
+							//cout << "before_avarible Test : true" << endl;
 							resultTrueSide += tempEval[0];
 							resultFalseSide += tempEval[1];
 						}
@@ -51,6 +52,7 @@ namespace heuristic
 						case model::avarible::after_avarible:
 						{
 							vector<typeEval> tempEval = evaluateFn.oneAvailable(board, currentSide, 15, 10); // double dead 3 (true side) : 30 , double dead 3 (false side) : 100
+							//cout << "after_avarible Test true" << endl;
 							resultTrueSide += tempEval[0];
 							resultFalseSide += tempEval[1];
 						}
@@ -59,18 +61,24 @@ namespace heuristic
 						{
 							// double live 2 (true side) : 30, double live 2 (false side) : 80, live 2 + dead 3 (true side) : 35 , live 2 + dead 3 (false side) : 85 
 							vector<typeEval> tempEval = evaluateFn.twoAvailable(board, currentSide, side, 15, 10, 15, 10);
+							//cout << "both_avarible Test true" << endl;
 							resultTrueSide += tempEval[0];
 							resultFalseSide += tempEval[1];
 						}
 							break;
 						case model::avarible::none_avarible:
-						{
+						/*{
 							vector<typeEval> tempEval = evaluateFn.noneAvailable(board, currentSide);
 							resultTrueSide += tempEval[0];
 							resultFalseSide += tempEval[1];
-						}
+						}*/
 							break;
 						case model::avarible::error:
+						/*{
+							vector<typeEval> tempEval = evaluateFn.noneAvailable(board, currentSide);
+							resultTrueSide += tempEval[0];
+							resultFalseSide += tempEval[1];
+						}*/
 							break;
 						default:
 							break;
@@ -84,6 +92,7 @@ namespace heuristic
 						case model::avarible::before_avarible:
 						{
 							vector<typeEval> tempEval = evaluateFn.oneAvailable(board, currentSide, 10, 25);
+							//cout << "before_avarible Test : false" << endl;
 							resultTrueSide += tempEval[0];
 							resultFalseSide += tempEval[1];
 						}
@@ -92,6 +101,7 @@ namespace heuristic
 						case model::avarible::after_avarible:
 						{
 							vector<typeEval> tempEval = evaluateFn.oneAvailable(board, currentSide, 10, 25);
+							//cout << "after_avarible Test false" << endl;
 							resultTrueSide += tempEval[0];
 							resultFalseSide += tempEval[1];
 						}
@@ -100,20 +110,26 @@ namespace heuristic
 						case model::avarible::both_avarible:
 						{
 							vector<typeEval> tempEval = evaluateFn.twoAvailable(board, currentSide, side, 10, 25, 10, 25);
+							//cout << "both_avarible Test true" << endl;
 							resultTrueSide += tempEval[0];
 							resultFalseSide += tempEval[1];
 						}
 							break;
 						
 						case model::avarible::none_avarible:
-						{
+						/*{
 							vector<typeEval> tempEval = evaluateFn.noneAvailable(board, currentSide);
 							resultTrueSide += tempEval[0];
 							resultFalseSide += tempEval[1];
-						}
+						}*/
 							break;
 						
 						case model::avarible::error:
+						/*{
+							vector<typeEval> tempEval = evaluateFn.noneAvailable(board, currentSide);
+							resultTrueSide += tempEval[0];
+							resultFalseSide += tempEval[1];
+						}*/
 							break;
 
 						default:
@@ -123,9 +139,10 @@ namespace heuristic
 				}
 			}
 		}
-
-		//return resultTrueSide - resultFalseSide;
-		return resultTrueSide;
+		resultTrue = resultTrueSide;
+		resultFalse = resultFalseSide;
+		return resultTrueSide - resultFalseSide;
+		//return resultTrueSide;
 	}
 
 	unordered_map<Coordinater, shared_ptr<action::Action>, model::Coordinater::KeyHasher> EvaluationWeight::generateActions(shared_ptr<model::State> s, bool side)

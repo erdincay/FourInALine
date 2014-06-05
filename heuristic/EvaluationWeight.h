@@ -19,6 +19,9 @@ namespace heuristic
 		typeEval eval(std::shared_ptr<model::State> s, bool side);
 		std::unordered_map<model::Coordinater, std::shared_ptr<action::Action>, model::Coordinater::KeyHasher> generateActions(std::shared_ptr<model::State> s, bool side);
 	
+		typeEval resultTrue;
+		typeEval resultFalse;
+
 	};
 
 }

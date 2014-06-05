@@ -17,6 +17,7 @@ namespace heuristic
 	const int THREE_CHESSMAN_ONE_AVAILABLE = 5;
 	const int THREE_CHESEMAN_BOTH_AVAILABLE = 10;
 	const int EXTRA_PLUS = 5;
+	const int WIN_GAME = 100;
 
 
 	class Evaluate 

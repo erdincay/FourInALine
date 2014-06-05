@@ -105,7 +105,11 @@ namespace solution
 		auto myAction = sln_->Run();
 		if (myAction == NULL)
 		{
+			
 			cout << "Game Over! " << endl;
+			auto h_ptr = static_pointer_cast<EvaluationWeight>(sln_->getHeuristic());
+			cout << h_ptr->eval(sln_->getCurState(), false) << ": " << h_ptr->resultTrue << " , " << h_ptr->resultFalse << endl;
+
 			cout << sln_->getCurState()->toString();
 		}
 		else
@@ -120,13 +124,20 @@ namespace solution
 		char y = 'A' + coord.getY() - 1;
 
 		auto board = sln_->getCurState();
-		
+		auto h_ptr = static_pointer_cast<EvaluationWeight>(sln_->getHeuristic());
+		cout << h_ptr->eval(sln_->getCurState(), false) << ": " << h_ptr->resultTrue << " , " << h_ptr->resultFalse << endl;
 		cout << board->toString();
 		cout << "my last move = " << y << x << endl;
 
 		Coordinater oppCoord = OppositeMove();
 		if (board->NewChess(oppCoord, false))
 		{
+			string x = lexical_cast<string>(oppCoord.getX());
+			char y = 'A' + oppCoord.getY() - 1;
+			auto h_ptr = static_pointer_cast<EvaluationWeight>(sln_->getHeuristic());
+			cout << h_ptr->eval(sln_->getCurState(), false) << ": " << h_ptr->resultTrue << " , " << h_ptr->resultFalse << endl;
+			cout << board->toString();
+			cout << "Your last move = " << y << x << endl;
 			MyCalculation();
 		}
 		else

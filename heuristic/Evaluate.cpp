@@ -47,6 +47,10 @@ namespace heuristic
 					resultTrueSide += evalLinearDD3Col(board, model::strMyRow, start, DD3True); // if it has double dead 3, add 10
 				}
 			}
+			else if (size == 4)
+			{
+				resultTrueSide += WIN_GAME;
+			}
 		}
 		else // // evaluate False 
 		{
@@ -66,6 +70,10 @@ namespace heuristic
 				{
 					resultFalseSide += evalLinearDD3Col(board, model::strOppositeRow, start, DD3False); // if it has double dead 3, add 30
 				}
+			}
+			else if (size == 4)
+			{
+				resultFalseSide += WIN_GAME;
 			}
 			
 		}
@@ -120,6 +128,10 @@ namespace heuristic
 				}
 				
 			}
+			else if (size == 4)
+			{
+				resultTrueSide += WIN_GAME;
+			}
 		}
 		else // evaluation opponent
 		{
@@ -157,6 +169,10 @@ namespace heuristic
 				}
 				
 			}
+			else if (size == 4)
+			{
+				resultFalseSide += WIN_GAME;
+			}
 		}
 		result.push_back(resultTrueSide); // the first is true evaluation
 		result.push_back(resultFalseSide); // the second is true evaluation
@@ -184,6 +200,10 @@ namespace heuristic
 				if (board->getPieces()->count(model::Coordinater(start.getX(), start.getY() + 1)) <= 0)
 					resultTrueSide += ONE_CHESSMAN;
 			}
+			else if (size == 4)
+			{
+				resultTrueSide += WIN_GAME;
+			}
 		}
 		else // evaluation opponent
 		{
@@ -197,6 +217,10 @@ namespace heuristic
 					resultFalseSide += ONE_CHESSMAN;
 				if (board->getPieces()->count(model::Coordinater(start.getX(), start.getY() + 1)) <= 0)
 					resultFalseSide += ONE_CHESSMAN;
+			}
+			else if (size == 4)
+			{
+				resultFalseSide += WIN_GAME;
 			}
 		}
 
