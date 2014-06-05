@@ -7,6 +7,7 @@ namespace heuristic
 	using namespace std;
 	using namespace model;
 	using namespace action;
+
 	EvaluationWeight::EvaluationWeight()
 	{
 	}
@@ -259,7 +260,7 @@ namespace heuristic
 		return result;
 	}
 
-	typeEval evalLinearCol(std::shared_ptr<model::ChessBoard> board, std::string key, model::Coordinater coord)
+	typeEval EvaluationWeight::evalLinearCol(std::shared_ptr<model::ChessBoard> board, std::string key, model::Coordinater coord)
 	{
 		typeEval result;
 		auto linear_statistics = board->getPieces()->getStatistics();
