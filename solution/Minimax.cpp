@@ -103,7 +103,15 @@ namespace solution
 	shared_ptr<Action> Minimax::Run() 
 	{
 		auto bestAction = Alpha_Beta_Search(borad_);
-		borad_ = bestAction->act(borad_);
+		if (bestAction != NULL)
+		{
+			borad_ = bestAction->act(borad_);
+		}
+
+		if (borad_->IsTerminal())
+		{
+			return shared_ptr<Action>();
+		}
 
 		return bestAction;
 	}

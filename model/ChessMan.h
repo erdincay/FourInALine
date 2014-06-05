@@ -22,7 +22,12 @@ namespace model
 		Coordinater getCoord();
 
 		std::pair<adjacent,bool> Adjacent(std::shared_ptr<ChessMan> oth);
-		
+
+		inline bool operator==(const ChessMan & other) const
+		{
+			return coord_ == other.coord_ && side_ == other.side_;
+		}
+
 	private:
 		bool side_;
 		Coordinater coord_;

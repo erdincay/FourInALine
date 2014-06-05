@@ -179,7 +179,7 @@ namespace model
 				}
 				else
 				{
-					Coordinater coord(i, j);
+					Coordinater coord(j, i);
 					auto find_ret = pieces_->find(coord);
 					if (find_ret == pieces_->end())
 					{

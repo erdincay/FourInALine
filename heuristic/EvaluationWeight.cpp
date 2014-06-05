@@ -133,42 +133,53 @@ namespace heuristic
 	unordered_map<Coordinater, shared_ptr<action::Action>, model::Coordinater::KeyHasher> EvaluationWeight::generateActions(shared_ptr<model::State> s, bool side)
 	{
 		unordered_map<Coordinater, shared_ptr<action::Action>, model::Coordinater::KeyHasher> possibleActions;
-		shared_ptr<ChessBoard> newS = static_pointer_cast<ChessBoard>(s);
-		shared_ptr<ChessMen> chesses = newS->getPieces();
-		for (int i = 1; newS->getSize(); i++)
+		shared_ptr<ChessBoard> board = static_pointer_cast<ChessBoard>(s);
+		shared_ptr<ChessMen> chesses = board->getPieces();
+
+		bool empty_board = true;
+
+		for (int i = 1; i <= board->getSize(); i++)
 		{
-			for (int j = 1; newS->getSize(); j++)
+			for (int j = 1; j <= board->getSize(); j++)
 			{
 				Coordinater checkPosition(i, j);
 				if (chesses->count(checkPosition) > 0)
 				{
+					empty_board = false;
+
 					Coordinater top(i, j + 1);
 					Coordinater bottom(i, j - 1);
 					Coordinater left(i - 1, j);
 					Coordinater right(i + 1, j);
 
-					if (newS->InsideBoundary(top) && chesses->count(top) <= 0)
+					if (board->InsideBoundary(top) && chesses->count(top) <= 0)
 					{
 						possibleActions[top] = shared_ptr<Action>(new MoveTo(top, side));
 					}
 					
-					if (newS->InsideBoundary(bottom) && chesses->count(bottom) <= 0)
+					if (board->InsideBoundary(bottom) && chesses->count(bottom) <= 0)
 					{
 						possibleActions[bottom] = shared_ptr<Action>(new MoveTo(bottom, side));
 					}
 
-					if (newS->InsideBoundary(left) && chesses->count(left) <= 0)
+					if (board->InsideBoundary(left) && chesses->count(left) <= 0)
 					{
 						possibleActions[left] = shared_ptr<Action>(new MoveTo(left, side));
 					}
 
-					if (newS->InsideBoundary(right) && chesses->count(right) <= 0)
+					if (board->InsideBoundary(right) && chesses->count(right) <= 0)
 					{
 						possibleActions[right] = shared_ptr<Action>(new MoveTo(right, side));
 					}
 				}
 
 			}
+		}
+
+		if (possibleActions.size() == 0 && empty_board)
+		{
+			Coordinater center(board->getSize() / 2, board->getSize() / 2);
+			possibleActions[center] = shared_ptr<Action>(new MoveTo(center, side));
 		}
 
 		return possibleActions;

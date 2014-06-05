@@ -34,7 +34,7 @@ namespace model
 		{
 			return 0;
 		}
-		else if (start_ == end_)
+		else if (start_ == end_ || *start_ == *end_)
 		{
 			return 1;
 		}
@@ -42,11 +42,11 @@ namespace model
 		{
 			if (adjacent::col_adjacent == getDirection())
 			{
-				return end_->getCoord().getY() - start_->getCoord().getY();
+				return end_->getCoord().getY() - start_->getCoord().getY() + 1;
 			}
 			else if (adjacent::row_adjacent == getDirection())
 			{
-				return end_->getCoord().getX() - start_->getCoord().getX();
+				return end_->getCoord().getX() - start_->getCoord().getX() + 1;
 			}
 		}
 

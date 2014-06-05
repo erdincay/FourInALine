@@ -14,7 +14,7 @@ namespace model
 		int getX();
 		int getY();
 
-		inline bool operator==(const Coordinater &other) const
+		inline bool operator==(const Coordinater & other) const
 		{
 			return x_ == other.x_ && y_ == other.y_;
 		}

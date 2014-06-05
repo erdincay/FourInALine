@@ -11,10 +11,11 @@ namespace model
 	}
 
 	ChessMen::ChessMen(const ChessMen & oth) 
+		: linear_statistics_(shared_ptr<typeStatistics>(new typeStatistics()))
 	{
 		for (const auto & elem : oth)
 		{
-			this->at(elem.first) = shared_ptr<ChessMan>(new ChessMan(*elem.second));
+			(*this)[elem.first] = shared_ptr<ChessMan>(new ChessMan(*elem.second));
 		}
 
 		for (auto statistic : *(oth.linear_statistics_))
@@ -28,9 +29,9 @@ namespace model
 					auto newLinear = shared_ptr<ChessLinear>(new ChessLinear(*linear));
 					newLinears->push_back(newLinear);
 				}
-				newStatistic->at(linears.first) = newLinears;
+				(*newStatistic)[linears.first] = newLinears;
 			}
-			linear_statistics_->at(statistic.first) = newStatistic;
+			(*linear_statistics_)[statistic.first] = newStatistic;
 		}
 	}
 
@@ -50,7 +51,7 @@ namespace model
 		if (got == this->end())
 		{
 			auto chess = shared_ptr<ChessMan>(new ChessMan(coord, side));
-			this->at(coord) = chess;
+			(*this)[coord] = chess;
 
 			Statistic(chess);
 
@@ -132,26 +133,26 @@ namespace model
 			linears->push_back(linear);
 
 			shared_ptr<typeStatistic> statistic = shared_ptr<typeStatistic>(new typeStatistic());
-			statistic->at(linearTag) = linears;
+			(*statistic)[linearTag] = linears;
 
-			linear_statistics_->at(typeTag) = statistic;
+			(*linear_statistics_)[typeTag] = statistic;
 		}
 		else
 		{
 			shared_ptr<typeStatistic> statistic = (*myStatistics).second;
-			auto myRow = statistic->find(linearTag);
-			if (myRow == statistic->end())
+			auto linears_ret = statistic->find(linearTag);
+			if (linears_ret == statistic->end())
 			{
 				shared_ptr<ChessLinear> linear = shared_ptr<ChessLinear>(new ChessLinear(chess));
 
 				shared_ptr<typeChessLinears> linears = shared_ptr<typeChessLinears>(new typeChessLinears());
 				linears->push_back(linear);
 
-				statistic->at(linearTag) = linears;
+				(*statistic)[linearTag] = linears;
 			}
 			else
 			{
-				shared_ptr<typeChessLinears> linears = (*myRow).second;
+				shared_ptr<typeChessLinears> linears = (*linears_ret).second;
 				bool bCombineChess = false;
 				for (size_t i = 0; i < linears->size(); i++)
 				{
@@ -159,9 +160,9 @@ namespace model
 					if (ret_ptr)
 					{
 						bCombineChess = true;
-						linears->at(i) = ret_ptr;
+						(*linears)[i] = ret_ptr;
 
-						(*myRow).second = RefactoryLinears(linears->at(i), linears, reqDirection);
+						(*linears_ret).second = RefactoryLinears(linears->at(i), linears, reqDirection);
 						break;
 					}
 				}
