@@ -13,6 +13,7 @@
   <ItemGroup>
     <ClInclude Include="action\Action.h" />
     <ClInclude Include="action\MoveTo.h" />
+    <ClInclude Include="heuristic\Evaluate.h" />
     <ClInclude Include="heuristic\EvaluationWeight.h" />
     <ClInclude Include="heuristic\Heuristic.h" />
     <ClInclude Include="model\ChessBoard.h" />
@@ -28,6 +29,7 @@
   <ItemGroup>
     <ClCompile Include="action\Action.cpp" />
     <ClCompile Include="action\MoveTo.cpp" />
+    <ClCompile Include="heuristic\Evaluate.cpp" />
     <ClCompile Include="heuristic\EvaluationWeight.cpp" />
     <ClCompile Include="heuristic\Heuristic.cpp" />
     <ClCompile Include="model\ChessBoard.cpp" />
@@ -74,8 +76,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\boost_1_55_0;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\boost_1_55_0\stage\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>D:\SourceTree\boost_1_55_0;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\SourceTree\boost_1_55_0\stage\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>

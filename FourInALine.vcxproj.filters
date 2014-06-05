@@ -14,6 +14,7 @@
     <ClCompile Include="solution\4InLine.cpp" />
     <ClCompile Include="solution\Minimax.cpp" />
     <ClCompile Include="solution\Timer.cpp" />
+    <ClCompile Include="heuristic\Evaluate.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="action\Action.h" />
@@ -29,6 +30,7 @@
     <ClInclude Include="resource.h" />
     <ClInclude Include="solution\Minimax.h" />
     <ClInclude Include="solution\Timer.h" />
+    <ClInclude Include="heuristic\Evaluate.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resource.rc" />
