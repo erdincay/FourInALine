@@ -1,130 +1,36 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="Header Files\model">
-      <UniqueIdentifier>{c890e5c9-46fa-4102-ba6d-232994ac0796}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\model">
-      <UniqueIdentifier>{b31b5072-c8c2-43ab-8ab9-2ffdb163cfec}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\solution">
-      <UniqueIdentifier>{a2aba747-c5f5-40b4-88db-bb21ff4a74a3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\solution">
-      <UniqueIdentifier>{a6403ba4-3cc5-4657-96a4-a6d4e7567d21}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\action">
-      <UniqueIdentifier>{1a46b954-d876-4180-a1b2-7c18523bc16f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\action">
-      <UniqueIdentifier>{e79843c8-f330-44a7-afde-a8378dbf11ed}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\heuristic">
-      <UniqueIdentifier>{41edeb81-8275-47a2-9f85-f3144b758998}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\heuristic">
-      <UniqueIdentifier>{d3d0a622-f72a-40f9-bb4b-b2f33745611c}</UniqueIdentifier>
-    </Filter>
+    <ClCompile Include="action\Action.cpp" />
+    <ClCompile Include="action\MoveTo.cpp" />
+    <ClCompile Include="heuristic\EvaluationWeight.cpp" />
+    <ClCompile Include="heuristic\Heuristic.cpp" />
+    <ClCompile Include="model\ChessBoard.cpp" />
+    <ClCompile Include="model\ChessLinear.cpp" />
+    <ClCompile Include="model\ChessMan.cpp" />
+    <ClCompile Include="model\ChessMen.cpp" />
+    <ClCompile Include="model\Coordinater.cpp" />
+    <ClCompile Include="model\State.cpp" />
+    <ClCompile Include="solution\4InLine.cpp" />
+    <ClCompile Include="solution\Minimax.cpp" />
+    <ClCompile Include="solution\Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="model\ChessMan.h">
-      <Filter>Header Files\model</Filter>
-    </ClInclude>
-    <ClInclude Include="model\ChessMen.h">
-      <Filter>Header Files\model</Filter>
-    </ClInclude>
-    <ClInclude Include="model\Coordinater.h">
-      <Filter>Header Files\model</Filter>
-    </ClInclude>
-    <ClInclude Include="model\ChessBoard.h">
-      <Filter>Header Files\model</Filter>
-    </ClInclude>
-    <ClInclude Include="solution\Minimax.h">
-      <Filter>Header Files\solution</Filter>
-    </ClInclude>
-    <ClInclude Include="model\State.h">
-      <Filter>Header Files\model</Filter>
-    </ClInclude>
-    <ClInclude Include="action\Action.h">
-      <Filter>Header Files\action</Filter>
-    </ClInclude>
-    <ClInclude Include="heuristic\Heuristic.h">
-      <Filter>Header Files\heuristic</Filter>
-    </ClInclude>
-    <ClInclude Include="action\MoveTo.h">
-      <Filter>Header Files\action</Filter>
-    </ClInclude>
-    <ClInclude Include="model\ChessLinear.h">
-      <Filter>Header Files\model</Filter>
-    </ClInclude>
-    <ClInclude Include="heuristic\EvaluationWeight.h">
-      <Filter>Header Files\heuristic</Filter>
-    </ClInclude>
-<<<<<<< HEAD
-    <ClInclude Include="resource.h">
-      <Filter>Header Files</Filter>
-=======
-    <ClInclude Include="solution\Timer.h">
-      <Filter>Header Files\solution</Filter>
->>>>>>> f14fff54e25f6d11b524d60ee3d37a2f17d06719
-    </ClInclude>
+    <ClInclude Include="action\Action.h" />
+    <ClInclude Include="action\MoveTo.h" />
+    <ClInclude Include="heuristic\EvaluationWeight.h" />
+    <ClInclude Include="heuristic\Heuristic.h" />
+    <ClInclude Include="model\ChessBoard.h" />
+    <ClInclude Include="model\ChessLinear.h" />
+    <ClInclude Include="model\ChessMan.h" />
+    <ClInclude Include="model\ChessMen.h" />
+    <ClInclude Include="model\Coordinater.h" />
+    <ClInclude Include="model\State.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="solution\Minimax.h" />
+    <ClInclude Include="solution\Timer.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="model\ChessMan.cpp">
-      <Filter>Source Files\model</Filter>
-    </ClCompile>
-    <ClCompile Include="model\ChessMen.cpp">
-      <Filter>Source Files\model</Filter>
-    </ClCompile>
-    <ClCompile Include="model\Coordinater.cpp">
-      <Filter>Source Files\model</Filter>
-    </ClCompile>
-    <ClCompile Include="solution\4InLine.cpp">
-      <Filter>Source Files\solution</Filter>
-    </ClCompile>
-    <ClCompile Include="model\ChessBoard.cpp">
-      <Filter>Source Files\model</Filter>
-    </ClCompile>
-    <ClCompile Include="solution\Minimax.cpp">
-      <Filter>Source Files\solution</Filter>
-    </ClCompile>
-    <ClCompile Include="model\State.cpp">
-      <Filter>Source Files\model</Filter>
-    </ClCompile>
-    <ClCompile Include="action\Action.cpp">
-      <Filter>Source Files\action</Filter>
-    </ClCompile>
-    <ClCompile Include="heuristic\Heuristic.cpp">
-      <Filter>Source Files\heuristic</Filter>
-    </ClCompile>
-    <ClCompile Include="action\MoveTo.cpp">
-      <Filter>Source Files\action</Filter>
-    </ClCompile>
-    <ClCompile Include="model\ChessLinear.cpp">
-      <Filter>Source Files\model</Filter>
-    </ClCompile>
-    <ClCompile Include="heuristic\EvaluationWeight.cpp">
-      <Filter>Source Files\heuristic</Filter>
-    </ClCompile>
-    <ClCompile Include="solution\Timer.cpp">
-      <Filter>Source Files\solution</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="Resource.rc">
-      <Filter>Resource Files</Filter>
-    </ResourceCompile>
+    <ResourceCompile Include="Resource.rc" />
   </ItemGroup>
 </Project>

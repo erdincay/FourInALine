@@ -145,4 +145,9 @@ namespace model
 			return avarible::none_avarible;
 		}
 	}
+
+	int ChessBoard::getSize()
+	{
+		return size_;
+	}
 }

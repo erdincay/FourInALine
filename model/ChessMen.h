@@ -12,6 +12,11 @@ namespace model
 	typedef std::unordered_map<int, std::shared_ptr<typeChessLinears>> typeStatistic;
 	typedef std::unordered_map<std::string, std::shared_ptr<typeStatistic>> typeStatistics;
 
+	const std::string strMyRow = "myRow";
+	const std::string strMyCol = "myCol";
+	const std::string strOppositeRow = "oppositeRow";
+	const std::string strOppositeCol = "oppositeCol";
+
 	class ChessMen : public typeChessMap
 	{
 	public:

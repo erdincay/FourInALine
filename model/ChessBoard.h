@@ -31,6 +31,7 @@ namespace model
 		avarible getLinearAvailable(std::shared_ptr<ChessLinear> linear);
 		bool InsideBoundary(Coordinater coord);
 		boost::logic::tribool getLocationType(Coordinater coord);
+		int getSize();
 
 	private:
 		int size_;

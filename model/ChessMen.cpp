@@ -4,11 +4,6 @@ namespace model
 {
 	using namespace std;
 
-	const string strMyRow = "myRow";
-	const string strMyCol = "myCol";
-	const string strOppositeRow = "oppositeRow";
-	const string strOppositeCol = "oppositeCol";
-
 	ChessMen::ChessMen()
 		:linear_statistics_(shared_ptr<typeStatistics>(new typeStatistics()))
 	{

@@ -32,8 +32,9 @@ namespace solution
 
 		auto v = make_pair(numeric_limits<typeEval>::min(), shared_ptr<Action>(NULL));
 
-		for (auto action : heuristic_->generateActions(s, true))
+		for (auto action_map : heuristic_->generateActions(s, true))
 		{
+			auto action = action_map.second;
 			shared_ptr<State> newState = action->act(s);
 			auto newV = Min_Value(newState, alpha, beta, ++deep, timer);
 			newV.second = action;
@@ -60,8 +61,9 @@ namespace solution
 
 		auto v = make_pair(numeric_limits<typeEval>::min(), shared_ptr<Action>(NULL));
 
-		for (auto action : heuristic_->generateActions(s, false))
+		for (auto action_map : heuristic_->generateActions(s, false))
 		{
+			auto action = action_map.second;
 			shared_ptr<State> newState = action->act(s);
 			auto newV = Max_Value(newState, alpha, beta, ++deep, timer);
 			newV.second = action;
