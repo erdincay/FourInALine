@@ -105,7 +105,7 @@ namespace solution
 		auto myAction = sln_->Run();
 		if (myAction == NULL)
 		{
-			cout << "Game Over" << endl;
+			cout << "Game Over! " << endl;
 		}
 		else
 		{

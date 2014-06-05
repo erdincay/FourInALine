@@ -198,7 +198,7 @@ namespace model
 			}
 			else if (endRet.first == reqDirection && endRet.second)
 			{
-				return shared_ptr<ChessLinear>(new ChessLinear(start_, end_));
+				return shared_ptr<ChessLinear>(new ChessLinear(start_, linear->getEnd()));
 			}
 		}
 
