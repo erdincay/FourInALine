@@ -8,7 +8,6 @@ namespace model
 	{
 	public:
 		Coordinater(int x, int y);
-		Coordinater(std::string coord);
 		Coordinater(const Coordinater & oth);
 		~Coordinater();
 

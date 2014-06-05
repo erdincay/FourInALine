@@ -33,6 +33,8 @@ namespace model
 		boost::logic::tribool getLocationType(Coordinater coord);
 		int getSize();
 
+		std::string toString();
+
 	private:
 		int size_;
 		int goalSize_;

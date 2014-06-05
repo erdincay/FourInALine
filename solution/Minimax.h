@@ -22,10 +22,13 @@ namespace solution
 	{
 	public:
 		Minimax(int size, int goalSize, std::shared_ptr<heuristic::Heuristic> h, int time_duration /* unit: seconds*/);
+		Minimax(int size, int goalSize, std::shared_ptr<heuristic::Heuristic> h, std::shared_ptr<model::State> s, int time_duration /* unit: seconds*/);
 		~Minimax();
 
+		std::shared_ptr<model::State> getCurState();
+
 		std::shared_ptr<action::Action> Alpha_Beta_Search(std::shared_ptr<model::State> s);
-		void Run();
+		std::shared_ptr<action::Action> Run();
 
 	protected:
 		std::pair<heuristic::typeEval, std::shared_ptr<action::Action>> Max_Value(std::shared_ptr<model::State> s, heuristic::typeEval alpha, heuristic::typeEval beta, int deep, Timer & timer);

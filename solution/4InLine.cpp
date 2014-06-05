@@ -1,9 +1,11 @@
 #include <iostream>
-using namespace std;
+#include "UI.h"
 
 int main(int argc, char *argv[])
 {
-	cout << "Do you want to go first?(Y/N)" << endl;
+	solution::UI user_interface;
+
+	user_interface.Start();
 
 	return 0;
 }

@@ -18,6 +18,14 @@ namespace solution
 
 	}
 
+	Minimax::Minimax(int size, int goalSize, shared_ptr<Heuristic> h, shared_ptr<State> s, int time_duration /* unit: seconds*/)
+		:heuristic_(h),
+		borad_(s),
+		time_duration_(time_duration)
+	{
+
+	}
+
 
 	Minimax::~Minimax()
 	{
@@ -81,15 +89,22 @@ namespace solution
 		return v;
 	}
 
+	shared_ptr<model::State> Minimax::getCurState()
+	{
+		return borad_;
+	}
+
 	shared_ptr<Action> Minimax::Alpha_Beta_Search(shared_ptr<model::State> s)
 	{
 		Timer timer(time_duration_ * 1000 /*timer unit millisecond*/);
 		return Max_Value(s, numeric_limits<typeEval>::min(), numeric_limits<typeEval>::max(), 0, timer).second;
 	}
 
-	void Minimax::Run() 
+	shared_ptr<Action> Minimax::Run() 
 	{
 		auto bestAction = Alpha_Beta_Search(borad_);
 		borad_ = bestAction->act(borad_);
+
+		return bestAction;
 	}
 }

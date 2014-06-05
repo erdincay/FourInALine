@@ -25,6 +25,7 @@
     <ClInclude Include="resource.h" />
     <ClInclude Include="solution\Minimax.h" />
     <ClInclude Include="solution\Timer.h" />
+    <ClInclude Include="solution\UI.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="action\Action.cpp" />
@@ -41,6 +42,7 @@
     <ClCompile Include="solution\4InLine.cpp" />
     <ClCompile Include="solution\Minimax.cpp" />
     <ClCompile Include="solution\Timer.cpp" />
+    <ClCompile Include="solution\UI.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resource.rc" />
@@ -56,6 +58,7 @@
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v120</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>false</UseOfMfc>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -93,7 +96,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>C:\tools\boost_1_55_0_win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

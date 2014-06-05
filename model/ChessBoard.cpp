@@ -1,5 +1,6 @@
 #include "ChessBoard.h"
 #include "ChessMan.h"
+#include <sstream>
 
 namespace model
 {
@@ -149,5 +150,54 @@ namespace model
 	int ChessBoard::getSize()
 	{
 		return size_;
+	}
+
+	string ChessBoard::toString()
+	{
+		ostringstream ostr;
+		for (int i = 0; i <= getSize(); i++)
+		{
+			if (i > 0)
+			{
+				ostr << i << " ";
+			}
+			else
+			{
+				ostr << "  ";
+			}
+		}
+		ostr << endl;
+
+		for (int i = 1; i <= getSize(); i++)
+		{
+			for (int j = 0; j <= getSize(); j++)
+			{
+				if (j == 0)
+				{
+					char row = 'A' - 1 + i;
+					ostr << row << " ";
+				}
+				else
+				{
+					Coordinater coord(i, j);
+					auto find_ret = pieces_->find(coord);
+					if (find_ret == pieces_->end())
+					{
+						ostr << "- ";
+					}
+					else if (find_ret->second->getSide())
+					{
+						ostr << "X ";
+					}
+					else
+					{
+						ostr << "O ";
+					}
+				}
+			}
+			ostr << endl;
+		}
+
+		return ostr.str();
 	}
 }
