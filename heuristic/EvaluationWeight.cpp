@@ -46,20 +46,21 @@ namespace heuristic
 						{
 						case model::avarible::before_avarible: /* before_avarible and  after_avarible are the same situation */
 						{
-							vector<typeEval> tempEval = evaluateFn.oneAvailable(board, currentSide, 30, 100);
+							vector<typeEval> tempEval = evaluateFn.oneAvailable(board, currentSide, 30, 100); // double dead 3 (true side) : 30 , double dead 3 (false side) : 100
 							resultTrueSide += tempEval[0];
 							resultFalseSide += tempEval[1];
 						}
 							break;
 						case model::avarible::after_avarible:
 						{
-							vector<typeEval> tempEval = evaluateFn.oneAvailable(board, currentSide, 30, 100);
+							vector<typeEval> tempEval = evaluateFn.oneAvailable(board, currentSide, 30, 100); // double dead 3 (true side) : 30 , double dead 3 (false side) : 100
 							resultTrueSide += tempEval[0];
 							resultFalseSide += tempEval[1];
 						}
 							break;
 						case model::avarible::both_avarible:
 						{
+							// double live 2 (true side) : 30, double live 2 (false side) : 80, live 2 + dead 3 (true side) : 35 , live 2 + dead 3 (false side) : 85 
 							vector<typeEval> tempEval = evaluateFn.twoAvailable(board, currentSide, side, 30, 80, 35, 85);
 							resultTrueSide += tempEval[0];
 							resultFalseSide += tempEval[1];

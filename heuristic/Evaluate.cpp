@@ -28,7 +28,7 @@ namespace heuristic
 		auto direction = this->linear_->getDirection();
 		auto start = this->linear_->getStart()->getCoord();
 		auto size = this->linear_->size();
-		if (currentSide == true) // evaluate True when the next is True
+		if (currentSide == true) // evaluate True
 		{
 			if (size == 2)
 			{
@@ -48,7 +48,7 @@ namespace heuristic
 				}
 			}
 		}
-		else // // evaluate False when the next is True
+		else // // evaluate False 
 		{
 			if (size == 2)
 			{
