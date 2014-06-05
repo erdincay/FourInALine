@@ -75,7 +75,7 @@ namespace heuristic
 						default:
 							break;
 						}
-						
+
 					}
 					else // the next is False
 					{
@@ -88,6 +88,7 @@ namespace heuristic
 							resultFalseSide += tempEval[1];
 						}
 							break;
+						
 						case model::avarible::after_avarible:
 						{
 							vector<typeEval> tempEval = evaluateFn.oneAvailable(board, currentSide, 10, 25);
@@ -95,6 +96,7 @@ namespace heuristic
 							resultFalseSide += tempEval[1];
 						}
 							break;
+						
 						case model::avarible::both_avarible:
 						{
 							vector<typeEval> tempEval = evaluateFn.twoAvailable(board, currentSide, side, 10, 25, 10, 25);
@@ -102,6 +104,7 @@ namespace heuristic
 							resultFalseSide += tempEval[1];
 						}
 							break;
+						
 						case model::avarible::none_avarible:
 						{
 							vector<typeEval> tempEval = evaluateFn.noneAvailable(board, currentSide);
@@ -109,8 +112,10 @@ namespace heuristic
 							resultFalseSide += tempEval[1];
 						}
 							break;
+						
 						case model::avarible::error:
 							break;
+
 						default:
 							break;
 						}
@@ -118,11 +123,7 @@ namespace heuristic
 				}
 			}
 		}
-		//cout << "Side is " << side << endl;
-		//double live 2
-		//double dead 3
-		//dead 3 + live 2
-		//live 3
+
 		//return resultTrueSide - resultFalseSide;
 		return resultTrueSide;
 	}
@@ -153,7 +154,7 @@ namespace heuristic
 					{
 						possibleActions[top] = shared_ptr<Action>(new MoveTo(top, side));
 					}
-					
+
 					if (board->InsideBoundary(bottom) && chesses->count(bottom) <= 0)
 					{
 						possibleActions[bottom] = shared_ptr<Action>(new MoveTo(bottom, side));

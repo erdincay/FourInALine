@@ -106,6 +106,7 @@ namespace solution
 		if (myAction == NULL)
 		{
 			cout << "Game Over! " << endl;
+			cout << sln_->getCurState()->toString();
 		}
 		else
 		{
